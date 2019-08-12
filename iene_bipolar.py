@@ -2,6 +2,7 @@ import pickle
 import signal
 import time
 from datetime import datetime
+import os
 
 from iene import valor_iene
 from twitter import twittar
@@ -21,12 +22,15 @@ class GracefulKiller:
 
 
 if __name__ == '__main__':
+    work_dir = os.path.dirname(os.path.realpath(__file__))
+    db_path = os.path.normpath('{}/ultimo_valor.db'.format(work_dir))
+
     killer = GracefulKiller()
     while not killer.kill_now:
         try:
-            with open('ultimo_valor.db', 'rb') as db:
+            with open(db_path, 'rb') as db:
                 ultimo_valor = pickle.load(db)
-        except FileNotFoundError:
+        except:
             print('Rodando pela primeira vez.')
             try:
                 valor_atual = valor_iene()
@@ -34,7 +38,7 @@ if __name__ == '__main__':
                 print_exc()
                 time.sleep(600)
                 continue
-            with open('ultimo_valor.db', 'wb') as db:
+            with open(db_path, 'wb') as db:
                 pickle.dump(valor_atual, db, protocol=pickle.HIGHEST_PROTOCOL)
         else:
             try:
@@ -67,7 +71,7 @@ if __name__ == '__main__':
                             time.sleep(900)
                             continue
                         print(msg)
-                    with open('ultimo_valor.db', 'wb') as db:
+                    with open(db_path, 'wb') as db:
                         pickle.dump(valor_atual, db,
                                     protocol=pickle.HIGHEST_PROTOCOL)
                 else:
