@@ -30,7 +30,6 @@ if __name__ == '__main__':
             print('Rodando pela primeira vez.')
             try:
                 valor_atual = valor_iene()
-                print(valor_atual)
             except:
                 print_exc()
                 time.sleep(600)
@@ -43,7 +42,7 @@ if __name__ == '__main__':
 
                 diferenca = round(abs(valor_atual - ultimo_valor), 6)
 
-                if diferenca >= 0.5:
+                if diferenca >= 0.05:
                     valor_reais = 'R${}'.format(str(valor_atual).
                                                 replace('.', ','))
                     hora = datetime.now().strftime('%H:%M')
