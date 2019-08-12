@@ -1,2 +1,2 @@
-py-money
+requests
 tweepy

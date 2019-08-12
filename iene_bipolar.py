@@ -59,7 +59,7 @@ if __name__ == '__main__':
                             continue
                         print(msg)
                     elif ultimo_valor > valor_atual:
-                        msg = "Bitcoin caiu (: - {} às {}".format(valor_reais,
+                        msg = "Iene caiu (: - {} às {}".format(valor_reais,
                                                                   hora)
                         try:
                             twittar(msg)
