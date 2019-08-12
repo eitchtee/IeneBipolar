@@ -46,7 +46,7 @@ if __name__ == '__main__':
 
                 diferenca = round(abs(valor_atual - ultimo_valor), 6)
 
-                if diferenca >= 0.05:
+                if diferenca >= 0.01:
                     valor_reais = 'R${}'.format(str(valor_atual).
                                                 replace('.', ','))
                     hora = datetime.now().strftime('%H:%M')
