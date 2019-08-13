@@ -75,7 +75,8 @@ if __name__ == '__main__':
                         pickle.dump(valor_atual, db,
                                     protocol=pickle.HIGHEST_PROTOCOL)
                 else:
-                    print('Diferença insignificante para ser postada.')
+                    print('Diferença insignificante para ser postada.',
+                          valor_atual, diferenca)
             except:
                 time.sleep(900)
                 continue
