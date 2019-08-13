@@ -1,13 +1,12 @@
+import os
 import pickle
 import signal
 import time
 from datetime import datetime
-import os
+from traceback import print_exc
 
 from iene import valor_iene
 from twitter import twittar
-
-from traceback import print_exc
 
 
 class GracefulKiller:
@@ -44,9 +43,9 @@ if __name__ == '__main__':
             try:
                 valor_atual = valor_iene()
 
-                diferenca = round(abs(valor_atual - ultimo_valor), 6)
+                diferenca = abs(valor_atual - ultimo_valor)
 
-                if diferenca >= 0.01:
+                if diferenca >= 0.00008:
                     valor_reais = 'R${}'.format(str(valor_atual).
                                                 replace('.', ','))
                     hora = datetime.now().strftime('%H:%M')
