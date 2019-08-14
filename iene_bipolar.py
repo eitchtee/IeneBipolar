@@ -1,5 +1,6 @@
 import os
 import pickle
+import random
 import signal
 import time
 from datetime import datetime
@@ -45,7 +46,7 @@ if __name__ == '__main__':
 
                 diferenca = abs(valor_atual - ultimo_valor)
 
-                if diferenca >= 0.000009:
+                if diferenca >= 0.00001:
                     valor_reais = 'R${}'.format(str(valor_atual).
                                                 replace('.', ','))
                     hora = datetime.now().strftime('%H:%M')
@@ -80,6 +81,6 @@ if __name__ == '__main__':
                 time.sleep(900)
                 continue
             else:
-                time.sleep(3900)
+                time.sleep(random.randint(2000, 5000))
 
     print("Parando execução.")
