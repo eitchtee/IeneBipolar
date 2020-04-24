@@ -46,14 +46,13 @@ if __name__ == '__main__':
 
                 diferenca = abs(valor_atual - ultimo_valor)
 
-                if diferenca >= 0.00001:
+                if diferenca >= 0.0001:
                     valor_reais = 'R${}'.format(str(valor_atual).
                                                 replace('.', ','))
                     hora = datetime.now().strftime('%H:%M')
 
                     if valor_atual > ultimo_valor:
-                        msg = "Iene subiu :( - {} às {}".format(valor_reais,
-                                                                   hora)
+                        msg = f"🔴 Iene subiu :( - {valor_reais} às {hora}"
                         try:
                             twittar(msg)
                         except:
@@ -62,8 +61,7 @@ if __name__ == '__main__':
                             continue
                         print(msg)
                     elif ultimo_valor > valor_atual:
-                        msg = "Iene caiu (: - {} às {}".format(valor_reais,
-                                                                  hora)
+                        msg = f"🟢 Iene caiu (: - {valor_reais} às {hora}"
                         try:
                             twittar(msg)
                         except:
@@ -75,12 +73,15 @@ if __name__ == '__main__':
                         pickle.dump(valor_atual, db,
                                     protocol=pickle.HIGHEST_PROTOCOL)
                 else:
-                    print('Diferença insignificante para ser postada.',
+                    print(f'Diferença insignificante para ser postada. '
+                          f'Último valor: {ultimo_valor} | '
+                          f'Valor atual: {valor_atual} | '
+                          f'Diferença: {diferenca}',
                           valor_atual, diferenca)
             except:
                 time.sleep(900)
                 continue
             else:
-                time.sleep(random.randint(2000, 5000))
+                time.sleep(random.randint(500, 7200))
 
     print("Parando execução.")
