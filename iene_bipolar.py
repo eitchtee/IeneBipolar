@@ -76,7 +76,7 @@ if __name__ == '__main__':
                     print(f'Diferença insignificante para ser postada. '
                           f'Último valor: {ultimo_valor} | '
                           f'Valor atual: {valor_atual} | '
-                          f'Diferença: {diferenca}')
+                          f'Diferença: f"{diferenca:.8f}"')
             except:
                 time.sleep(900)
                 continue
