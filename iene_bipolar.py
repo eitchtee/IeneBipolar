@@ -59,7 +59,9 @@ if __name__ == '__main__':
                             print_exc()
                             time.sleep(900)
                             continue
-                        print(msg)
+                        print(msg + f".    Último valor: {ultimo_valor} | "
+                                    f'Valor atual: {valor_atual} | '
+                                    f'Diferença: {diferenca:.8f}')
                     elif ultimo_valor > valor_atual:
                         msg = f"🟢 Iene caiu (: - {valor_reais} às {hora}"
                         try:
@@ -68,7 +70,9 @@ if __name__ == '__main__':
                             print_exc()
                             time.sleep(900)
                             continue
-                        print(msg)
+                        print(msg + f".    Último valor: {ultimo_valor} | "
+                                    f'Valor atual: {valor_atual} | '
+                                    f'Diferença: {diferenca:.8f}')
                     with open(db_path, 'wb') as db:
                         pickle.dump(valor_atual, db,
                                     protocol=pickle.HIGHEST_PROTOCOL)
