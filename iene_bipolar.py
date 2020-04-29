@@ -24,6 +24,7 @@ class GracefulKiller:
 if __name__ == '__main__':
     work_dir = os.path.dirname(os.path.realpath(__file__))
     db_path = os.path.normpath('{}/ultimo_valor.db'.format(work_dir))
+    dif_min = 0.0002
 
     killer = GracefulKiller()
     while not killer.kill_now:
@@ -46,7 +47,7 @@ if __name__ == '__main__':
 
                 diferenca = abs(valor_atual - ultimo_valor)
 
-                if diferenca >= 0.0001:
+                if diferenca >= dif_min:
                     valor_reais = 'R${}'.format(str(valor_atual).
                                                 replace('.', ','))
                     hora = datetime.now().strftime('%H:%M')
